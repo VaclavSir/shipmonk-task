@@ -1,11 +1,14 @@
-export type Bin = {
+type Bin = {
   id: string;
   w: number;
   h: number;
   d: number;
   max_wg: number;
 }
-export type Item = {
+
+export type Bins = ReadonlyArray<Bin>;
+
+type Item = {
   id: string;
   w: number;
   h: number;
@@ -14,3 +17,5 @@ export type Item = {
   q: number;
   vr: 1 | 0;
 }
+
+export type Items = ReadonlyArray<Item>;

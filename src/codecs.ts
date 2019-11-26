@@ -1,5 +1,5 @@
 import * as t from "io-ts";
-import {Bin, Item} from "./types";
+import {Bins, Items} from "./types";
 
 export const inputFormData = t.interface({
   bins: t.array(
@@ -34,7 +34,7 @@ function notEmpty<Value>(value: Value | null | undefined): value is Value {
   return value !== null && value !== undefined;
 }
 
-export function decodeInputFormData(data: unknown): [ReadonlyArray<Bin>, ReadonlyArray<Item>] {
+export function decodeInputFormData(data: unknown): [Bins, Items] {
   const decoded = inputFormData.decode(data);
   if (decoded._tag === 'Right') {
     const bins = decoded.right.bins

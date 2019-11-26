@@ -2,10 +2,10 @@ import React from "react";
 import useForm from "react-hook-form";
 import {useKeys} from "./useKeys";
 import {decodeInputFormData} from "./codecs";
-import {Bin, Item} from "./types";
+import {Bins, Items} from "./types";
 
 type Props = {
-  onSubmit: (bins: ReadonlyArray<Bin>, items: ReadonlyArray<Item>) => void;
+  onSubmit: (bins: Bins, items: Items) => void;
 };
 
 export const InputForm: React.FC<Props> = ({onSubmit}) => {
