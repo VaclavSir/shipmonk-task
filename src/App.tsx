@@ -3,7 +3,7 @@ import './App.css';
 import { InputForm } from "./InputForm";
 
 const App: React.FC = () => {
-  const onSubmit = (data: any) => {
+  const onSubmit = (...data: any) => {
     alert(JSON.stringify(data));
   };
   return <InputForm onSubmit={onSubmit} />;

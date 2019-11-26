@@ -1,18 +1,24 @@
 import React from "react";
 import useForm from "react-hook-form";
 import {useKeys} from "./useKeys";
+import {decodeInputFormData} from "./codecs";
+import {Bin, Item} from "./types";
 
 type Props = {
-  onSubmit: (data: any) => void;
+  onSubmit: (bins: ReadonlyArray<Bin>, items: ReadonlyArray<Item>) => void;
 };
 
-export const InputForm: React.FC<Props> = ({ onSubmit }) => {
+export const InputForm: React.FC<Props> = ({onSubmit}) => {
   const {register, handleSubmit} = useForm();
   const {keys: containerKeys, remove: removeContainer, add: addContainer} = useKeys();
   const {keys: itemKeys, remove: removeItem, add: addItem} = useKeys();
 
+  const submit = (data: unknown) => {
+    onSubmit(...decodeInputFormData(data));
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(submit)}>
       <h2>Containers</h2>
       {containerKeys.map(key => {
         const baseName = `bins[${key}]`;
@@ -86,7 +92,7 @@ export const InputForm: React.FC<Props> = ({ onSubmit }) => {
             </label>
             <label>
               <div>VR</div>
-              <input type="checkbox" name={`${baseName}.q`} ref={register}/>
+              <input type="checkbox" name={`${baseName}.vr`} ref={register}/>
             </label>
             <div>
               <button onClick={event => {
