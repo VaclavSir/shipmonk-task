@@ -4,6 +4,7 @@ import {Bins, Items} from "./types";
 export const inputFormData = t.interface({
   bins: t.array(
     t.union([
+      t.undefined,
       t.nullType,
       t.interface({
         id: t.string,
@@ -16,6 +17,7 @@ export const inputFormData = t.interface({
   ),
   items: t.array(
     t.union([
+      t.undefined,
       t.nullType,
       t.interface({
         id: t.string,
@@ -63,6 +65,7 @@ export function decodeInputFormData(data: unknown): [Bins, Items] {
       });
     return [bins, items];
   } else {
+    debugger
     throw new Error("Invalid shape of input data, shouldn't ever happen");
   }
 }
