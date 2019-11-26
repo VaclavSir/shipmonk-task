@@ -1,7 +1,7 @@
 import * as t from "io-ts";
-import {Bins, Items} from "./types";
+import {Bins, Items} from "../types";
 
-export const inputFormData = t.interface({
+const inputFormData = t.interface({
   bins: t.array(
     t.union([
       t.undefined,

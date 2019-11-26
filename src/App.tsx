@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import { InputForm } from "./InputForm";
+import { InputForm } from "./form/InputForm";
 import {Bins, Items} from "./types";
 import {fetchPack} from "./fetchPack";
 
