@@ -2,19 +2,20 @@ import React, {useState} from 'react';
 import './App.css';
 import { InputForm } from "./form/InputForm";
 import {Bins, Items} from "./types";
-import {fetchPack} from "./fetchPack";
+import {fetchPack, PackResponse} from "./fetchPack";
+import {PackResult} from "./PackResult";
 
 const App: React.FC = () => {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<PackResponse | null>(null);
   const onSubmit = (bins: Bins, items: Items) => {
     fetchPack(bins, items)
-      .then(responseBody => {
-        setResult(responseBody);
+      .then(result => {
+        setResult(result);
       });
   };
   return <>
     <InputForm onSubmit={onSubmit} />
-    <div>{JSON.stringify(result)}</div>
+    {result && <PackResult result={result}/>}
   </>;
 }
 

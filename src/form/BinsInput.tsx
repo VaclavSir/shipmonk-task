@@ -2,7 +2,7 @@ import React from "react";
 import {useKeys} from "./useKeys";
 import {useFormContext} from "react-hook-form";
 
-export const BinsInput: React.FC<any> = () => {
+export const BinsInput: React.FC = () => {
   const {register} = useFormContext();
   const {keys, remove, add} = useKeys();
   return <>

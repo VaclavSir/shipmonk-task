@@ -5,3 +5,8 @@
 .containerForm input {
   max-width: 50px;
 }
+.binFirstRow {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
